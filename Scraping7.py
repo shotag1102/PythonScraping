@@ -1,6 +1,7 @@
 from time import sleep
 from bs4 import BeautifulSoup
 import requests
+import pandas as pd
 
 url = "https://suumo.jp/chintai/tokyo/sc_shinjuku/?page={}"
 d_list = []
@@ -42,3 +43,8 @@ for i in range(1,4):
             from pprint import pprint
             print()
             pprint(d_list[0])
+            df = pd.DataFrame(d_list)
+            print(df.head())
+            df.shape
+            len(df.title.unique())
+            df.to_csv("test.csv", index=None, encoding="utf-8-sig")
